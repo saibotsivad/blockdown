@@ -1,3 +1,2 @@
-- github workflow to do tests
-- re-read the readme and tidy it up a bit
+- github workflow todo tests
 - remove this file
