@@ -1,4 +1,4 @@
-const BLOCK_MARKER_REGEX = /---\!([^{#]+)((?:#)([^{]+))?({.+)?/
+const BLOCK_MARKER_REGEX = /^---\!([^\[#]+)(?:(?:#)([^\[]+))?(?:\[([^\]]+))?/
 const CODE_FENCE = /^```.*/
 const FRONTMATTER = Symbol('FRONTMATTER')
 
@@ -8,37 +8,42 @@ export const parse = string => {
 	const blocks = []
 	const warnings = []
 
-	let type = 'markdown'
-	let blockId = undefined
+	let name = 'markdown'
+	let id = undefined
 	let metadata = undefined
 	let content = []
 	let escaped = false
 
 	const makeBlock = () => {
 		blocks.push({
-			type: type === FRONTMATTER
+			name: name === FRONTMATTER
 				? 'frontmatter'
-				: type,
-			id: blockId,
+				: name,
+			id,
 			metadata,
 			content: content.length
 				? content.join('\n')
 				: undefined
 		})
+		name = undefined
+		id = undefined
+		metadata = undefined
+		content = []
+		escaped = false
 	}
 
 	if (lines[0] === '---') {
-		type = FRONTMATTER
+		name = FRONTMATTER
 		lines.splice(0, 1)
 	}
 
 	for (const line of lines) {
-		if (type === FRONTMATTER && line === '---') {
+		if (name === FRONTMATTER && line === '---') {
 			// finish frontmatter block
 			makeBlock()
 
 			// start the first block as markdown
-			type = 'markdown'
+			name = 'markdown'
 			content = []
 		} else if (!escaped && line.startsWith('---!')) {
 			const match = BLOCK_MARKER_REGEX.exec(line)
@@ -49,16 +54,12 @@ export const parse = string => {
 				}
 
 				// start a new block
-				type = match[1].trim()
-				blockId = match[3] && match[3].trim() || undefined
-				metadata = undefined
-				content = []
-				if (match[4]) {
-					try {
-						metadata = JSON.parse(match[4])
-					} catch (ignore) {
-						warnings.push({ line, code: 'UNPARSEABLE_METADATA' })
-					}
+				name = match[1].trim()
+				if (match[2]) {
+					id = match[2]
+				}
+				if (match[3]) {
+					metadata = match[3]
 				}
 			} else {
 				warnings.push({ line, code: 'UNPARSEABLE_MARKER' })

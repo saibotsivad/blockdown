@@ -5,37 +5,37 @@ import globbedTests from './globbed-tests.js'
 
 const blockDelimiters = [
 	[
-		'only has a type',
+		'only has a name',
 		'---!foo',
 		{
-			type: 'foo',
+			name: 'foo',
 			id: undefined,
 			metadata: undefined,
 			content: undefined
 		}
 	],[
-		'has a type and data',
+		'has a name and data',
 		'---!foo[bar]',
 		{
-			type: 'foo',
+			name: 'foo',
 			id: undefined,
 			metadata: 'bar',
 			content: undefined
 		}
 	],[
-		'has a type and id',
+		'has a name and id',
 		'---!foo#bar',
 		{
-			type: 'foo',
+			name: 'foo',
 			id: 'bar',
 			metadata: undefined,
 			content: undefined
 		}
 	],[
-		'has a type and data',
+		'has a name and data',
 		'---!foo#bar[fizz]',
 		{
-			type: 'foo',
+			name: 'foo',
 			id: 'bar',
 			metadata: 'fizz',
 			content: undefined

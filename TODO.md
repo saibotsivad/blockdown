@@ -1,5 +1,3 @@
-- fix the delimiter to use brackets and not be json
-- renamed type to name
 - add changelog
 - add other cruft
 - remove this file
