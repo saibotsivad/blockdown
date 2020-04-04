@@ -1,3 +1,3 @@
-- add changelog
-- add other cruft
+- github workflow to do tests
+- re-read the readme and tidy it up a bit
 - remove this file
