@@ -1,4 +1,4 @@
-import { parse } from './index.js'
+import { parse } from './src/index.js'
 import { readFileSync } from 'fs'
 import { test } from 'zora'
 import globbedTests from './globbed-tests.js'
