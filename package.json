@@ -1,6 +1,6 @@
 {
   "name": "@saibotsivad/blockdown",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A Markdown-like syntax that supports defining blocks of text.",
   "main": "index.js",
   "scripts": {
