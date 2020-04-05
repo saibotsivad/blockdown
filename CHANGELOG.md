@@ -16,6 +16,12 @@ Change categories are:
 
 ## [Unreleased]
 
+## [1.0.2] - 2020-04-04
+
+### Fixed
+
+- Update dev dependencies, and clean up the README file a bit.
+
 ## [1.0.1] - 2020-04-04
 
 ### Fixed
@@ -27,5 +33,6 @@ Change categories are:
 - Initial project release. 🎉
 
 [Unreleased]: https://github.com/saibotsivad/blockdown/compare/master...develop
+[1.0.2]: https://github.com/saibotsivad/blockdown/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/saibotsivad/blockdown/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/saibotsivad/blockdown/tree/v1.0.0

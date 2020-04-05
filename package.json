@@ -21,7 +21,7 @@
   "devDependencies": {
     "bundt": "^1.0.0",
     "esm": "^3.2.25",
-    "glob-module-file": "^3.0.1",
+    "glob-module-file": "^3.0.2",
     "zora": "^3.1.8"
   },
   "dependencies": {}
