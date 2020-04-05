@@ -54,7 +54,7 @@ With Blockdown, you define each block of text explicitly, using a delimiter that
 * `---!name#id` It can also include an identifier, if you need to identify a unique block.
 * `---!name#id[metadata]` It can also include metadata, for things like display settings.
 
-> Note: The metadata is enclosed in square brackets, but the exact content of the metadata is not an opinion enforced by Blockdown. You can use simple [ini style](https://en.wikipedia.org/wiki/INI_file) `[key1=value1,key2=value]`, or use plain JSON `[{"foo":"bar"}]` or use [JSON5](https://json5.org/) `[{foo:'bar'}]`. Blockdown syntax does not care--leaves metadata interpretation up to you.
+> Note: The metadata is enclosed in square brackets, but the exact content of the metadata is not an opinion enforced by Blockdown. You can use simple [ini style](https://en.wikipedia.org/wiki/INI_file) `[key1=value1,key2=value]`, or use plain JSON `[{"foo":"bar"}]` or use [JSON5](https://json5.org/) `[{foo:'bar'}]`. Blockdown syntax does not care–it leaves metadata interpretation up to you.
 
 Our earlier example, written in fully explicit format, would be:
 

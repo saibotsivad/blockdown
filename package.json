@@ -1,17 +1,28 @@
 {
   "name": "@saibotsivad/blockdown",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A Markdown-like syntax that supports defining blocks of text.",
-  "main": "index.js",
+  "unpkg": "dist/blockdown.min.js",
+  "module": "dist/blockdown.mjs",
+  "main": "dist/blockdown.js",
   "scripts": {
+    "build": "bundt",
     "pretest": "glob-module-file --pattern='./test/*.js' --format=es --exportWithPath > globbed-tests.js",
     "test": "node -r esm test.js"
   },
   "author": "saibotsivad",
+  "engines": {
+    "node": ">=10"
+  },
+  "files": [
+    "dist"
+  ],
   "license": "VOL",
   "devDependencies": {
+    "bundt": "^1.0.0",
     "esm": "^3.2.25",
-    "glob-module-file": "^3.0.1",
+    "glob-module-file": "^3.0.2",
     "zora": "^3.1.8"
-  }
+  },
+  "dependencies": {}
 }
