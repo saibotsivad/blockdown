@@ -1,0 +1,20 @@
+{
+  "name": "blockdown",
+  "version": "0.0.0",
+  "description": "This is a demo page and REPL, to be hosted by Github Pages, of the Blockdown syntax.",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'build all assets'",
+    "dev": "echo 'launch server and rebuild with a watch'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saibotsivad/blockdown.git"
+  },
+  "author": "saibotsivad",
+  "license": "VOL",
+  "bugs": {
+    "url": "https://github.com/saibotsivad/blockdown/issues"
+  },
+  "homepage": "https://github.com/saibotsivad/blockdown#readme"
+}
