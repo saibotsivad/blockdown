@@ -2,8 +2,6 @@ export default {
 	blocks: [
 		{
 			name: 'markdown',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'starts as markdown',
 				''
@@ -11,8 +9,6 @@ export default {
 		},
 		{
 			name: 'foo',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'',
 				'has block',
@@ -21,8 +17,6 @@ export default {
 		},
 		{
 			name: 'markdown',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'',
 				'back to markdown',

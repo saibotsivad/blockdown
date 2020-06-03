@@ -8,28 +8,21 @@ const blockDelimiters = [
 		'only has a name',
 		'---!foo',
 		{
-			name: 'foo',
-			id: undefined,
-			metadata: undefined,
-			content: undefined
+			name: 'foo'
 		}
 	],[
 		'has a name and data',
 		'---!foo[bar]',
 		{
 			name: 'foo',
-			id: undefined,
-			metadata: 'bar',
-			content: undefined
+			metadata: 'bar'
 		}
 	],[
 		'has a name and id',
 		'---!foo#bar',
 		{
 			name: 'foo',
-			id: 'bar',
-			metadata: undefined,
-			content: undefined
+			id: 'bar'
 		}
 	],[
 		'has a name and data',
@@ -37,8 +30,30 @@ const blockDelimiters = [
 		{
 			name: 'foo',
 			id: 'bar',
-			metadata: 'fizz',
-			content: undefined
+			metadata: 'fizz'
+		}
+	],[
+		'multiline metadata',
+		[
+			'---!foo#bar[',
+			'  fizz',
+			']'
+		].join('\n'),
+		{
+			name: 'foo',
+			id: 'bar',
+			metadata: '  fizz'
+		}
+	],[
+		'multiline metadata without id',
+		[
+			'---!foo[',
+			'  fizz',
+			']'
+		].join('\n'),
+		{
+			name: 'foo',
+			metadata: '  fizz'
 		}
 	]
 ]

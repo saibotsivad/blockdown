@@ -2,8 +2,6 @@ export default {
 	blocks: [
 		{
 			name: 'markdown',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'',
 				''
@@ -11,8 +9,6 @@ export default {
 		},
 		{
 			name: 'yaml',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'',
 				'foo: bar',
