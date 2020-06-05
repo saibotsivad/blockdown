@@ -1,0 +1,11 @@
+body {
+	max-width: 120em;
+	margin: 0 auto;
+}
+
+#header {}
+#header #branding {}
+#header #set-version {}
+#header #generate-link {}
+
+

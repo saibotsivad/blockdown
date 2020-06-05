@@ -1,0 +1,34 @@
+<script>
+export let blocks = ''
+export let warnings = ''
+</script>
+
+{#if warnings}
+	<ol>
+		{#each warnings as warning}
+			<li>{warning}</li>
+		{/each}
+	</ol>
+{/if}
+
+{#if blocks}
+	<ol>
+		{#each blocks as block}
+			<li>
+				<dl>
+					<dt>Name</dt>
+					<dd>{block.name}</dd>
+
+					<dt>ID</dt>
+					<dd>{block.id}</dd>
+
+					<dt>Metadata</dt>
+					<dd>{block.metadata}</dd>
+
+					<dt>Content</dt>
+					<dd>{block.content}</dd>
+				</dl>
+			</li>
+		{/each}
+	</ol>
+{/if}
