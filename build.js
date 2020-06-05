@@ -56,6 +56,12 @@
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
     }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -293,6 +299,13 @@
             dispose();
         };
     }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
+        else
+            dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
+    }
     function set_data_dev(text, data) {
         data = '' + data;
         if (text.data === data)
@@ -339,13 +352,21 @@
 
     function create_fragment(ctx) {
     	let button;
+    	let t;
+    	let img;
+    	let img_src_value;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
     			button = element("button");
-    			button.textContent = "Update Link";
+    			t = text("Update Link\n\t");
+    			img = element("img");
+    			if (img.src !== (img_src_value = "src/fontawesome/link-solid.svg")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "aria-hidden", "true");
+    			attr_dev(img, "alt", "Link icon");
+    			add_location(img, file, 4, 1, 34);
     			add_location(button, file, 0, 0, 0);
     		},
     		l: function claim(nodes) {
@@ -353,6 +374,8 @@
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
+    			append_dev(button, t);
+    			append_dev(button, img);
 
     			if (!mounted) {
     				dispose = listen_dev(button, "click", /*click_handler*/ ctx[0], false, false, false);
