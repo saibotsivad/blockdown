@@ -16,7 +16,7 @@ export default {
 		file: 'build.js'
 	},
 	plugins: [
-		serve({
+		!production && serve({
 			contentBase: './',
 			port: 3000
 		}),

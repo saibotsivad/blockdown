@@ -4,7 +4,7 @@
   "description": "This is a demo page and REPL, to be hosted by Github Pages, of the Blockdown syntax.",
   "main": "index.js",
   "scripts": {
-    "build": "echo 'build all assets'",
+    "build": "rollup -c",
     "dev": "rollup -c -w"
   },
   "repository": {
