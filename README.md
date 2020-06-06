@@ -123,6 +123,33 @@ import { parse } from '@saibotsivad/blockdown';
 const blockdown = parse(readFileSync('./test/many-chunks.md'));
 ```
 
+### API: `parse(<String>): Object<blocks: Array, warnings: Array>`
+
+This implementation has a very simple API, you simply call the `parse`
+function with the string you want parsed.
+
+The returned object contains two potential properties.
+
+#### `blocks: Array<Object>`
+
+The `blocks` property is an array of all parsed Blockdown blocks, it
+contains the following properties:
+
+* `name` (`String`, optional) - The name of the block, e.g. for `---!yaml` this property would be `yaml`.
+* `id` (`String`, optional) - The `id` of the block, e.g. for `---!yaml#part1` this property would be `part1`.
+* `metadata` (`String`, optional) - The metadata exactly as represented in the Blockdown block, e.g. without metadata type parsing.
+* `content` (`String`, optional) - The content between block delimiters.
+
+### `warnings: Array<Object>`
+
+The `warnings` property is an array of all recoverable parser errors encountered. The array will always exist, but if there were no errors it will be empty.
+
+It contains the following properties:
+
+* `index` (`Integer`) - The zero-index line number where the error was first detected.
+* `code` (`String`) - The meant-for-machines name of the error type. (As of `1.1.0`, only `UNPARSEABLE_MARKER` is used.)
+* `line` (`String`) - The text found at the line where the error was first detected.
+
 ## License
 
 The project code 

@@ -37,6 +37,7 @@ export const parse = string => {
 		lines.splice(0, 1)
 	}
 
+	let index = 0
 	for (const line of lines) {
 		if (name === FRONTMATTER && line === '---') {
 			// finish frontmatter block
@@ -62,7 +63,7 @@ export const parse = string => {
 					metadata = match[3]
 				}
 			} else {
-				warnings.push({ line, code: 'UNPARSEABLE_MARKER' })
+				warnings.push({ line, code: 'UNPARSEABLE_MARKER', index })
 				content.push(line)
 			}
 		} else {
@@ -73,6 +74,7 @@ export const parse = string => {
 			}
 			content.push(line)
 		}
+		index++
 	}
 
 	// wrap up last block
