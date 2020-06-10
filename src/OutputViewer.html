@@ -9,8 +9,9 @@ export let warnings = ''
 {#if warnings && warnings.length}
 	<h2 class="warning">Warnings</h2>
 	<ol>
-		{#each warnings as warning}
+		{#each warnings as warning, index}
 			<li>
+				<h3>{index}</h3>
 				<Warning {warning} />
 			</li>
 		{/each}
@@ -20,8 +21,9 @@ export let warnings = ''
 {#if blocks}
 	<h2 class="block">Blocks</h2>
 	<ol>
-		{#each blocks as block}
+		{#each blocks as block, index}
 			<li>
+				<h3>{index}</h3>
 				<Block {block} />
 			</li>
 		{/each}
@@ -31,6 +33,9 @@ export let warnings = ''
 <style>
 h2 {
 	margin: 0;
+}
+h3 {
+	margin-bottom: 0;
 }
 ol {
 	list-style: none;
