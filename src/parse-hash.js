@@ -1,9 +1,18 @@
 const defaultStartingText = `---
-title: About Blockdown
-created: 2020-06-04
+title: My Post
 ---
 
-Here is some markdown.
+Some exciting words.
+
+---!mermaid[size=large]
+
+pie title NETFLIX
+    "Time spent looking for movie" : 90
+    "Time spent watching it" : 10
+
+---!md
+
+More words.
 
 `
 
