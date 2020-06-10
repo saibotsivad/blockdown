@@ -52,15 +52,12 @@ body {
 }
 #text-editor {
 	flex-grow: 1;
-	padding: 1em;
+	margin: 1em;
+	margin-right: 2em;
+	min-width: 40%;
 }
 #output-viewer {
 	flex-grow: 1;
-}
-
-#text-editor textarea {
-	width: 100%;
-	border: 1px solid #ddd;
-	padding: 1em;
-	height: 100%;
+	margin: 1em;
+	margin-left: 1em;
 }

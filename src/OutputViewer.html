@@ -1,34 +1,41 @@
 <script>
+import Block from './Block.html'
+import Warning from './Warning.html'
+
 export let blocks = ''
 export let warnings = ''
 </script>
 
-{#if warnings}
+{#if warnings && warnings.length}
+	<h2 class="warning">Warnings</h2>
 	<ol>
 		{#each warnings as warning}
-			<li>{warning}</li>
+			<li>
+				<Warning {warning} />
+			</li>
 		{/each}
 	</ol>
 {/if}
 
 {#if blocks}
+	<h2 class="block">Blocks</h2>
 	<ol>
 		{#each blocks as block}
 			<li>
-				<dl>
-					<dt>Name</dt>
-					<dd>{block.name}</dd>
-
-					<dt>ID</dt>
-					<dd>{block.id}</dd>
-
-					<dt>Metadata</dt>
-					<dd>{block.metadata}</dd>
-
-					<dt>Content</dt>
-					<dd>{block.content}</dd>
-				</dl>
+				<Block {block} />
 			</li>
 		{/each}
 	</ol>
 {/if}
+
+<style>
+h2 {
+	margin: 0;
+}
+ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 0.5em;
+}
+</style>

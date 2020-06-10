@@ -1,0 +1,23 @@
+<script>
+import DefinitionList from './DefinitionList.html'
+
+export let block = {}
+
+$: list = [
+	{
+		label: 'Name',
+		text: block.name
+	},{
+		label: 'ID',
+		text: block.id
+	},{
+		label: 'Metadata',
+		text: block.metadata
+	},{
+		label: 'Content',
+		text: block.content
+	}
+]
+</script>
+
+<DefinitionList {list} />
