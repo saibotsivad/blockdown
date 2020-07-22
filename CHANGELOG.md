@@ -16,6 +16,14 @@ Change categories are:
 
 ## [Unreleased]
 
+* N/A
+
+## [1.2.0] - 2020-07-21
+
+### Added
+
+* Added support for multi-line metadata. 🎉
+
 ## [1.1.1] - 2020-06-01
 
 ### Fixed
@@ -46,6 +54,7 @@ Change categories are:
 - Initial project release. 🎉
 
 [Unreleased]: https://github.com/saibotsivad/blockdown/compare/master...develop
+[1.2.0]: https://github.com/saibotsivad/blockdown/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/saibotsivad/blockdown/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/saibotsivad/blockdown/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/saibotsivad/blockdown/compare/v1.0.1...v1.0.2
