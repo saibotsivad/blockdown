@@ -2,8 +2,6 @@ export default {
 	blocks: [
 		{
 			name: 'md',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'',
 				'good',

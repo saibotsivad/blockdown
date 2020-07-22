@@ -2,8 +2,6 @@ export default {
 	blocks: [
 		{
 			name: 'frontmatter',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'foo: bar',
 				'published: 2020-01-01',
@@ -12,8 +10,6 @@ export default {
 		},
 		{
 			name: 'markdown',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'',
 				'# This is markdown',
@@ -34,8 +30,6 @@ export default {
 		},
 		{
 			name: 'fizz2',
-			id: undefined,
-			metadata: undefined,
 			content: [
 				'',
 				'this is a fizz section',
@@ -44,8 +38,7 @@ export default {
 		},
 		{
 			name: 'foo3',
-			id: undefined,
-			metadata: 'fizz1',
+			metadata: 'fizz3',
 			content: [
 				'',
 				'more things 1',
@@ -54,7 +47,6 @@ export default {
 		},
 		{
 			name: 'foo4',
-			id: undefined,
 			metadata: 'has blank content',
 			content: [
 				''
@@ -62,13 +54,10 @@ export default {
 		},
 		{
 			name: 'foo5',
-			id: undefined,
-			metadata: 'has no content',
-			content: undefined
+			metadata: 'has no content'
 		},
 		{
 			name: 'foo6',
-			id: undefined,
 			metadata: '    lots of spaces   ',
 			content: [
 				'',
@@ -79,7 +68,6 @@ export default {
 		{
 			name: 'foo7',
 			id: 'ref1',
-			metadata: undefined,
 			content: [
 				'',
 				'has a reference',

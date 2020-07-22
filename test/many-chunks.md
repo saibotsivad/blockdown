@@ -22,7 +22,7 @@ that wasn't a break because it was in a code block
 
 this is a fizz section
 
----!foo3[fizz1]
+---!foo3[fizz3]
 
 more things 1
 

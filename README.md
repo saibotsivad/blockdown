@@ -50,11 +50,11 @@ Sounds doable but... if only there was a better way... 🤔
 
 With Blockdown, you define each block of text explicitly, using a delimiter that's easy for humans and computers alike to read:
 
-* `---!name` The delimiter must have a name, which is usually the content type, e.g. `mermaid`.
+* `---!name` The delimiter **must** have a name, which is usually the content type, e.g. `mermaid`.
 * `---!name#id` It can also include an identifier, if you need to identify a unique block.
 * `---!name#id[metadata]` It can also include metadata, for things like display settings.
 
-> Note: The metadata is enclosed in square brackets, but the exact content of the metadata is not an opinion enforced by Blockdown. You can use simple [ini style](https://en.wikipedia.org/wiki/INI_file) `[key1=value1,key2=value]`, or use plain JSON `[{"foo":"bar"}]` or use [JSON5](https://json5.org/) `[{foo:'bar'}]`. Blockdown syntax does not care–it leaves metadata interpretation up to you.
+> Note: The metadata is enclosed in square brackets, but the exact syntax of the metadata is not specified by Blockdown. Blockdown syntax ***does not care***–it leaves metadata interpretation up to you.
 
 Our earlier example, written in fully explicit format, would be:
 
@@ -81,13 +81,13 @@ Blockdown syntax doesn't care what the contents are, it only cares about separat
 Each block in a Blockdown document contains the following possible properties:
 
 * `name` *(String, required)* The name of the block, e.g. for `---!yaml` the `name` would be `yaml`.
-* `id` *(String, optional)* The identifier of the block or `undefined`, e.g. for `---!yaml#abc` the `id` would be `abc`.
-* `metadata` *(String, optional)* The metadata string (unparsed!) of whatever is between the square brackets, e.g. for `---!yaml#abc[foo]` or `---!yaml[foo]` the `metadata` would be `foo`.
+* `id` *(String, optional)* The optional identifier of the block, e.g. for `---!yaml#abc` the `id` would be `abc`.
+* `metadata` *(String, optional)* The optional metadata string of whatever is between the square brackets, e.g. for `---!yaml#abc[foo]` or `---!yaml[foo]` the `metadata` would be `foo`.
 * `content` *(String, optional)* Any characters following the block delimiter, up to the next block delimiter or the end of the file.
 
 ## Backwards Compatibility
 
-For backwards compatibility with Markdown + Front Matter documents, if the very first line is `---` that following block is interpreted as Front Matter, up to the the next Blockdown delimiter or `---` separator.
+For backwards compatibility with Markdown + [Front Matter](https://jekyllrb.com/docs/front-matter/) documents, if the very first line is `---` then the following block is interpreted as Front Matter, up to the the next Blockdown delimiter or `---` separator.
 
 If the `---` separator is used (instead of a Blockdown delimiter), the following block is treated as Markdown.
 
@@ -110,6 +110,28 @@ Some exciting words.
 More words.
 ```
 
+## Multi-Line Metadata
+
+You may find that single-line metadata gets cumbersome with large metadata sets.
+
+To use multi-line metadata, you end the delimiter with `[` (the left square bracket), and close the metadata section with a line containing only the `]` character (right square bracket).
+
+For example:
+
+```
+---!mermaid[
+  size=large
+  color=red
+]
+    pie title NETFLIX
+        "Time spent looking for movie" : 90
+        "Time spent watching it" : 10
+
+---!md
+
+More words.
+```
+
 ## Implementation
 
 This project ships with a JavaScript implementation.
@@ -121,6 +143,7 @@ import { readFileSync } from 'fs';
 import { parse } from '@saibotsivad/blockdown';
 
 const blockdown = parse(readFileSync('./test/many-chunks.md'));
+console.log(blockdown.blocks[3].metadata); // => 'fizz3'
 ```
 
 ### API: `parse(<String>): Object<blocks: Array, warnings: Array>`
@@ -128,7 +151,7 @@ const blockdown = parse(readFileSync('./test/many-chunks.md'));
 This implementation has a very simple API, you simply call the `parse`
 function with the string you want parsed.
 
-The returned object contains two potential properties.
+The returned object contains two potential properties:
 
 #### `blocks: Array<Object>`
 
@@ -137,7 +160,7 @@ contains the following properties:
 
 * `name` (`String`, optional) - The name of the block, e.g. for `---!yaml` this property would be `yaml`.
 * `id` (`String`, optional) - The `id` of the block, e.g. for `---!yaml#part1` this property would be `part1`.
-* `metadata` (`String`, optional) - The metadata exactly as represented in the Blockdown block, e.g. without metadata type parsing.
+* `metadata` (`String`, optional) - The metadata exactly as represented in the Blockdown block, e.g. without metadata type parsing or de-indentation on multi-line metadata.
 * `content` (`String`, optional) - The content between block delimiters.
 
 ### `warnings: Array<Object>`
@@ -152,4 +175,4 @@ It contains the following properties:
 
 ## License
 
-The project code 
+The project code and all specs are published under the [Very Open License](http://veryopenlicense.com/).
