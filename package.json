@@ -8,7 +8,7 @@
   "scripts": {
     "build": "bundt",
     "pretest": "glob-module-file --pattern='./test/*.js' --format=es --exportWithPath > globbed-tests.js",
-    "test": "node -r esm test.js"
+    "test": "node -r esm test.js | tap-exit-code"
   },
   "author": "saibotsivad",
   "engines": {
@@ -22,6 +22,7 @@
     "bundt": "^1.0.0",
     "esm": "^3.2.25",
     "glob-module-file": "^3.0.2",
+    "tap-exit-code": "^2.0.0",
     "zora": "^3.1.8"
   },
   "dependencies": {}
