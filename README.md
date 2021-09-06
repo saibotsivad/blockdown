@@ -8,7 +8,7 @@ If you are using Markdown with Front Matter, your existing Markdown files are pr
 
 Blockdown does not have opinions about which flavor of Markdown you should use, or which plugins you should support.
 
-Instead it defines text blocks in such a way that *you* can decide what to do with them.
+Instead, it defines text blocks in such a way that *you* can decide what to do with them.
 
 ## Why?
 
@@ -52,9 +52,10 @@ With Blockdown, you define each block of text explicitly, using a delimiter that
 
 * `---!name` The delimiter **must** have a name, which is usually the content type, e.g. `mermaid`.
 * `---!name#id` It can also include an identifier, if you need to identify a unique block.
-* `---!name#id[metadata]` It can also include metadata, for things like display settings.
+* `---!name[metadata]` It can also include metadata, for things like display settings.
+* `---!name#id[metadata]` Of course, it can include an identifier *and* metadata.
 
-> Note: The metadata is enclosed in square brackets, but the exact syntax of the metadata is not specified by Blockdown. Blockdown syntax ***does not care***–it leaves metadata interpretation up to you.
+> Note: The metadata is enclosed in square brackets, but the exact syntax of the metadata is **not** specified by Blockdown. Blockdown syntax ***does not care***–it leaves metadata interpretation up to you.
 
 Our earlier example, written in fully explicit format, would be:
 
@@ -67,9 +68,10 @@ title: My Post
 Some exciting words.
 
 ---!mermaid[size=large]
-    pie title NETFLIX
-        "Time spent looking for movie" : 90
-        "Time spent watching it" : 10
+
+pie title NETFLIX
+    "Time spent looking for movie" : 90
+    "Time spent watching it" : 10
 
 ---!md
 
@@ -87,7 +89,7 @@ Each block in a Blockdown document contains the following possible properties:
 
 ## Backwards Compatibility
 
-For backwards compatibility with Markdown + [Front Matter](https://jekyllrb.com/docs/front-matter/) documents, if the very first line is `---` then the following block is interpreted as Front Matter, up to the the next Blockdown delimiter or `---` separator.
+For backwards compatibility with Markdown + [Front Matter](https://jekyllrb.com/docs/front-matter/) documents, if the very first line is `---` then the following block is interpreted as Front Matter, up to the next Blockdown delimiter or `---` separator.
 
 If the `---` separator is used (instead of a Blockdown delimiter), the following block is treated as Markdown.
 
@@ -101,9 +103,10 @@ title: My Post
 Some exciting words.
 
 ---!mermaid[size=large]
-    pie title NETFLIX
-        "Time spent looking for movie" : 90
-        "Time spent watching it" : 10
+
+pie title NETFLIX
+    "Time spent looking for movie" : 90
+    "Time spent watching it" : 10
 
 ---!md
 
@@ -123,14 +126,17 @@ For example:
   size=large
   color=red
 ]
-    pie title NETFLIX
-        "Time spent looking for movie" : 90
-        "Time spent watching it" : 10
+
+pie title NETFLIX
+	"Time spent looking for movie" : 90
+	"Time spent watching it" : 10
 
 ---!md
 
 More words.
 ```
+
+> Note: the indentation of the metadata here is optional.
 
 ## Implementation
 
@@ -142,14 +148,13 @@ Simply import the `parse` function and pass it the string:
 import { readFileSync } from 'fs';
 import { parse } from '@saibotsivad/blockdown';
 
-const blockdown = parse(readFileSync('./test/many-chunks.md'));
+const blockdown = parse(readFileSync('./test/many-chunks.md', 'utf8'));
 console.log(blockdown.blocks[3].metadata); // => 'fizz3'
 ```
 
 ### API: `parse(<String>): Object<blocks: Array, warnings: Array>`
 
-This implementation has a very simple API, you simply call the `parse`
-function with the string you want parsed.
+This implementation has a very simple API, you simply call the `parse` function with the string you want parsed.
 
 The returned object contains two potential properties:
 

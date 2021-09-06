@@ -18,7 +18,13 @@ Change categories are:
 
 * N/A
 
-## [1.2.0] - 2020-07-21
+## [1.2.2] - 2021-09-06
+
+### Fixed
+
+* Some minor language issues.
+
+## [1.2.0] and [1.2.1] - 2020-07-21
 
 ### Added
 
@@ -54,6 +60,8 @@ Change categories are:
 - Initial project release. 🎉
 
 [Unreleased]: https://github.com/saibotsivad/blockdown/compare/master...develop
+[1.2.2]: https://github.com/saibotsivad/blockdown/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/saibotsivad/blockdown/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/saibotsivad/blockdown/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/saibotsivad/blockdown/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/saibotsivad/blockdown/compare/v1.0.2...v1.1.0
