@@ -16,7 +16,11 @@ Change categories are:
 
 ## [Unreleased]
 
-* N/A
+### Changed
+
+* BREAKING CHANGE: Changed syntax from `---!name#id[metadata]` to `---[[name#id|metadata]]` in
+  order make some additional planned features more consistent.
+* Dropped `zora` in favor of `uvu` for better diff printouts.
 
 ## [1.2.2] - 2021-09-06
 

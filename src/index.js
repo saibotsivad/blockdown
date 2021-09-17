@@ -1,5 +1,19 @@
-const SINGLE_LINE_BLOCK_MARKER = /^---\!([^\[#]+)(?:(?:#)([^\[]+))?(?:\[([^\]]+)\]$)?/
-const MULTI_LINE_BLOCK_START_MARKER = /^---\!([^\[#]+)(?:(?:#)([^\[]+))?(?:\[$)/
+// start of line followed by three dashes
+//	^---
+// start the brackets
+// \[\[
+// after that, the name is required, so capture any characters up to the `#` or `|`
+// ([^#|]+)
+// then, if there's an id we can capture it, which is the group starting
+// with #, then any character up to the pipe |, but it's optional
+// (?:#([^|]+))?
+// then, if there's metadata we capture everything up to the end brackets
+// (?:\|(.+))?
+// then we find the closing brackets
+// \]\]$?/
+
+const SINGLE_LINE_BLOCK_MARKER = /^---\[\[([^#|]+)(?:#([^|]+))?(?:\|(.+))?]]$/
+const MULTI_LINE_BLOCK_START_MARKER = /^---\[\[([^|#]+)(?:#([^|]+))?\|$/
 const CODE_FENCE = /^```.*/
 const LINE_BREAK = /\r?\n/
 
@@ -55,15 +69,15 @@ export const parse = string => {
 			makeBlock()
 			state.name = 'markdown'
 		} else if (state.position === 'metadata') {
-			if (line === ']') {
+			if (line === ']]') {
 				// Mark the end of the metadata section. The closing
 				// square brace is discarded.
 				state.position = 'content'
 			} else {
 				state.metadata.push(line)
 			}
-		} else if (!state.escaped && line.startsWith('---!')) {
-			const multilineMetadata = line.endsWith('[')
+		} else if (!state.escaped && line.startsWith('---[[')) {
+			const multilineMetadata = line.endsWith('|')
 			const match = multilineMetadata
 				? MULTI_LINE_BLOCK_START_MARKER.exec(line)
 				: SINGLE_LINE_BLOCK_MARKER.exec(line)
