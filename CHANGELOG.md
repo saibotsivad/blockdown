@@ -16,7 +16,12 @@ Change categories are:
 
 ## [Unreleased]
 
-* N/A
+### Changed
+
+* BREAKING CHANGE: Changed syntax from `---!name#id[metadata]` to `---[[name#id|metadata]]` in
+  order make some additional planned features more consistent.
+* BREAKING CHANGE: Dropped support for NodeJS pre-12, added tests for 12, 14, and 16.
+* Dropped `zora` in favor of `uvu` for better diff printouts.
 
 ## [1.2.2] - 2021-09-06
 

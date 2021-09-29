@@ -6,7 +6,7 @@ export default {
 				'',
 				'good',
 				'',
-				'---!',
+				'---[[]]',
 				'',
 				'bad',
 				''
@@ -17,7 +17,7 @@ export default {
 		{
 			index: 4,
 			code: 'UNPARSEABLE_MARKER',
-			line: '---!'
+			line: '---[[]]'
 		}
 	]
 }

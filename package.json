@@ -5,14 +5,15 @@
   "unpkg": "dist/blockdown.min.js",
   "module": "dist/blockdown.mjs",
   "main": "dist/blockdown.js",
+  "type": "module",
   "scripts": {
     "build": "bundt",
     "pretest": "glob-module-file --pattern='./test/*.js' --format=es --exportWithPath > globbed-tests.js",
-    "test": "node -r esm test.js | tap-exit-code"
+    "test": "node test.js"
   },
   "author": "saibotsivad",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "files": [
     "dist"
@@ -20,10 +21,7 @@
   "license": "VOL",
   "devDependencies": {
     "bundt": "^1.0.0",
-    "esm": "^3.2.25",
     "glob-module-file": "^3.0.2",
-    "tap-exit-code": "^2.0.0",
-    "zora": "^3.1.8"
-  },
-  "dependencies": {}
+    "uvu": "^0.5.1"
+  }
 }

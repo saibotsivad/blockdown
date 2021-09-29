@@ -1,32 +1,33 @@
-import { parse } from './src/index.js'
 import { readFileSync } from 'fs'
-import { test } from 'zora'
+import { test } from 'uvu'
+import * as assert from 'uvu/assert'
+import { parse } from './src/index.js'
 import globbedTests from './globbed-tests.js'
 
 const blockDelimiters = [
 	[
 		'only has a name',
-		'---!foo',
+		'---[[foo]]',
 		{
 			name: 'foo'
 		}
 	],[
 		'has a name and data',
-		'---!foo[bar]',
+		'---[[foo|bar]]',
 		{
 			name: 'foo',
 			metadata: 'bar'
 		}
 	],[
 		'has a name and id',
-		'---!foo#bar',
+		'---[[foo#bar]]',
 		{
 			name: 'foo',
 			id: 'bar'
 		}
 	],[
 		'has a name and data',
-		'---!foo#bar[fizz]',
+		'---[[foo#bar|fizz]]',
 		{
 			name: 'foo',
 			id: 'bar',
@@ -35,9 +36,9 @@ const blockDelimiters = [
 	],[
 		'multiline metadata',
 		[
-			'---!foo#bar[',
+			'---[[foo#bar|',
 			'  fizz',
-			']'
+			']]'
 		].join('\n'),
 		{
 			name: 'foo',
@@ -47,9 +48,9 @@ const blockDelimiters = [
 	],[
 		'multiline metadata without id',
 		[
-			'---!foo[',
+			'---[[foo|',
 			'  fizz',
-			']'
+			']]'
 		].join('\n'),
 		{
 			name: 'foo',
@@ -58,18 +59,20 @@ const blockDelimiters = [
 	]
 ]
 
-test('block delimiters', t => {
+test('block delimiters', () => {
 	for (const [ message, delimiter, expected ] of blockDelimiters) {
-		t.equal(parse(delimiter).blocks[0], expected, message)
+		assert.equal(parse(delimiter).blocks[0], expected, message)
 	}
 })
 
-test('all test files', t => {
+test('all test files', () => {
 	for (const { path, export: expected } of globbedTests) {
 		const string = readFileSync(
 			path.replace(/\.js$/, '.md'),
 			{ encoding: 'utf8' }
 		)
-		t.equal(parse(string), expected, path)
+		assert.equal(parse(string), expected, path)
 	}
 })
+
+test.run()

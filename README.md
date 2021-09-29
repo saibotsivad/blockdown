@@ -50,30 +50,30 @@ Sounds doable but... if only there was a better way... 🤔
 
 With Blockdown, you define each block of text explicitly, using a delimiter that's easy for humans and computers alike to read:
 
-* `---!name` The delimiter **must** have a name, which is usually the content type, e.g. `mermaid`.
-* `---!name#id` It can also include an identifier, if you need to identify a unique block.
-* `---!name[metadata]` It can also include metadata, for things like display settings.
-* `---!name#id[metadata]` Of course, it can include an identifier *and* metadata.
+* `---[[name]]` The delimiter **must** have a name, which is usually the content type, e.g. `mermaid`.
+* `---[[name#id]]` It can also include an identifier, if you need to identify a unique block.
+* `---[[name|metadata]]` It can also include metadata, for things like display settings.
+* `---[[name#id|metadata]]` Of course, it can include an identifier *and* metadata.
 
 > Note: The metadata is enclosed in square brackets, but the exact syntax of the metadata is **not** specified by Blockdown. Blockdown syntax ***does not care***–it leaves metadata interpretation up to you.
 
 Our earlier example, written in fully explicit format, would be:
 
 ```
----!yaml
+---[[yaml]]
 title: My Post
 
----!md
+---[[md]]
 
 Some exciting words.
 
----!mermaid[size=large]
+---[[mermaid|size=large]]
 
 pie title NETFLIX
     "Time spent looking for movie" : 90
     "Time spent watching it" : 10
 
----!md
+---[[md]]
 
 More words.
 ```
@@ -82,9 +82,9 @@ Blockdown syntax doesn't care what the contents are, it only cares about separat
 
 Each block in a Blockdown document contains the following possible properties:
 
-* `name` *(String, required)* The name of the block, e.g. for `---!yaml` the `name` would be `yaml`.
-* `id` *(String, optional)* The optional identifier of the block, e.g. for `---!yaml#abc` the `id` would be `abc`.
-* `metadata` *(String, optional)* The optional metadata string of whatever is between the square brackets, e.g. for `---!yaml#abc[foo]` or `---!yaml[foo]` the `metadata` would be `foo`.
+* `name` *(String, required)* The name of the block, e.g. for `---[[yaml]]` the `name` would be `yaml`.
+* `id` *(String, optional)* The optional identifier of the block, e.g. for `---[[yaml#abc]]` the `id` would be `abc`.
+* `metadata` *(String, optional)* The optional metadata string of whatever is comes after the `|` pipe, e.g. for `---[[yaml#abc|foo]]` or `---[[yaml|foo]]` the `metadata` would be `foo`.
 * `content` *(String, optional)* Any characters following the block delimiter, up to the next block delimiter or the end of the file.
 
 ## Backwards Compatibility
@@ -102,13 +102,13 @@ title: My Post
 
 Some exciting words.
 
----!mermaid[size=large]
+---[[mermaid|size=large]]
 
 pie title NETFLIX
     "Time spent looking for movie" : 90
     "Time spent watching it" : 10
 
----!md
+---[[md]]
 
 More words.
 ```
@@ -117,21 +117,21 @@ More words.
 
 You may find that single-line metadata gets cumbersome with large metadata sets.
 
-To use multi-line metadata, you end the delimiter with `[` (the left square bracket), and close the metadata section with a line containing only the `]` character (right square bracket).
+To use multi-line metadata, you end the delimiter with `|` (the pipe), and close the metadata section with a line containing only the `]]` characters (two right square brackets).
 
 For example:
 
 ```
----!mermaid[
-  size=large
-  color=red
-]
+---[[mermaid|
+	size=large
+	color=red
+]]
 
 pie title NETFLIX
 	"Time spent looking for movie" : 90
 	"Time spent watching it" : 10
 
----!md
+---[[md]]
 
 More words.
 ```
@@ -163,8 +163,8 @@ The returned object contains two potential properties:
 The `blocks` property is an array of all parsed Blockdown blocks, it
 contains the following properties:
 
-* `name` (`String`, optional) - The name of the block, e.g. for `---!yaml` this property would be `yaml`.
-* `id` (`String`, optional) - The `id` of the block, e.g. for `---!yaml#part1` this property would be `part1`.
+* `name` (`String`, optional) - The name of the block, e.g. for `---[[yaml]]` this property would be `yaml`.
+* `id` (`String`, optional) - The `id` of the block, e.g. for `---[[yaml#part1]]` this property would be `part1`.
 * `metadata` (`String`, optional) - The metadata exactly as represented in the Blockdown block, e.g. without metadata type parsing or de-indentation on multi-line metadata.
 * `content` (`String`, optional) - The content between block delimiters.
 
