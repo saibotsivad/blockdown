@@ -3,8 +3,8 @@
   "version": "2.0.0",
   "description": "A Markdown-like syntax that supports defining blocks of text.",
   "unpkg": "dist/blockdown.min.js",
-  "module": "dist/blockdown.mjs",
-  "main": "dist/blockdown.js",
+  "module": "dist/blockdown.js",
+  "main": "dist/blockdown.cjs",
   "type": "module",
   "scripts": {
     "build": "bundt",
