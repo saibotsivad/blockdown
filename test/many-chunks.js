@@ -21,7 +21,7 @@ export default {
 				'still markdown that was an hr because no curly',
 				'',
 				'```',
-				'---[[fizz1]]',
+				'---!fizz1',
 				'```',
 				'',
 				'that wasn\'t a break because it was in a code block',

@@ -1,5 +1,5 @@
 
 
----[[yaml]]
+---!yaml
 
 foo: bar

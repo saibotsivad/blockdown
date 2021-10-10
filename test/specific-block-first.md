@@ -1,3 +1,3 @@
----[[yaml]]
+---!yaml
 
 foo: bar
