@@ -1,9 +1,9 @@
 starts as markdown
 
----[[foo]]
+---!foo
 
 has block
 
----[[markdown]]
+---!markdown
 
 back to markdown

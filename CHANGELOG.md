@@ -18,6 +18,14 @@ Change categories are:
 
 (Nothing yet)
 
+## [3.0.0] - 2021-10-10
+
+### Changed
+
+This change reverts the earlier syntax change, back to the original syntax.
+
+* BREAKING CHANGE: Revert syntax change in 2.0.0
+
 ## [2.0.1] - 2021-09-30
 
 ### Fixed
@@ -76,6 +84,7 @@ Change categories are:
 - Initial project release. 🎉
 
 [Unreleased]: https://github.com/saibotsivad/blockdown/compare/master...develop
+[3.0.0]: https://github.com/saibotsivad/blockdown/compare/v2.0.1...v3.0.0
 [2.0.1]: https://github.com/saibotsivad/blockdown/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/saibotsivad/blockdown/compare/v1.2.2...v2.0.0
 [1.2.2]: https://github.com/saibotsivad/blockdown/compare/v1.2.1...v1.2.2

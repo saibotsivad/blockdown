@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs'
+import { readFileSync } from 'node:fs'
 import { test } from 'uvu'
 import * as assert from 'uvu/assert'
 import { parse } from './src/index.js'
@@ -7,27 +7,27 @@ import globbedTests from './globbed-tests.js'
 const blockDelimiters = [
 	[
 		'only has a name',
-		'---[[foo]]',
+		'---!foo',
 		{
 			name: 'foo'
 		}
 	],[
 		'has a name and data',
-		'---[[foo|bar]]',
+		'---!foo[bar]',
 		{
 			name: 'foo',
 			metadata: 'bar'
 		}
 	],[
 		'has a name and id',
-		'---[[foo#bar]]',
+		'---!foo#bar',
 		{
 			name: 'foo',
 			id: 'bar'
 		}
 	],[
 		'has a name and data',
-		'---[[foo#bar|fizz]]',
+		'---!foo#bar[fizz]',
 		{
 			name: 'foo',
 			id: 'bar',
@@ -36,9 +36,9 @@ const blockDelimiters = [
 	],[
 		'multiline metadata',
 		[
-			'---[[foo#bar|',
+			'---!foo#bar[',
 			'  fizz',
-			']]'
+			']'
 		].join('\n'),
 		{
 			name: 'foo',
@@ -48,9 +48,9 @@ const blockDelimiters = [
 	],[
 		'multiline metadata without id',
 		[
-			'---[[foo|',
+			'---!foo[',
 			'  fizz',
-			']]'
+			']'
 		].join('\n'),
 		{
 			name: 'foo',

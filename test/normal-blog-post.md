@@ -7,27 +7,27 @@ foo:
 
 All blocks start with `--!name`, for example here is a [mermaidjs](https://mermaid-js.github.io/) block:
 
----[[mermaid]]
+---!mermaid
 
 pie title What Voldemort doesn't have?
          "FRIENDS" : 2
          "FAMILY" : 3
          "NOSE" : 45
 
----[[md]]
+---!md
 
 Now we are back to markdown.
 
 Blocks can include an identifier as `--!name#id` for example if you
 want to include data and reference it elsewhere:
 
----[[csv#teams]]
+---!csv#teams
 
 Team ID,Team Name,Player Count
 abc,Cool People,12
 def,More Teams,7
 
----[[md]]
+---!md
 
 You can link to [referenced blocks](#teams) but be careful: if your
 markdown plugin generates ids from headers, you need to manage
@@ -35,11 +35,11 @@ collisions yourself.
 
 If the block type plugin requires parameters, you can set them.
 
----[[html|version=1.0]]
+---!html{"version":"1.0"}
 
 <blink>A bit of nostalgia.</blink>
 
----[[md]]
+---!md
 
 When each plugin is executed, it is called asynchronously with the
 block content, reference, and parameters, and also given the context
