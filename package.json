@@ -1,6 +1,6 @@
 {
   "name": "@saibotsivad/blockdown",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A Markdown-like syntax that supports defining blocks of text.",
   "unpkg": "dist/blockdown.min.js",
   "module": "dist/blockdown.js",
