@@ -1,6 +1,6 @@
-import { initialize } from './src/initialize.js'
-import { parseHash } from './src/parse-hash.js'
-import { updateLink } from './src/update-link.js'
+import { initialize } from './initialize.js'
+import { parseHash } from './parse-hash.js'
+import { updateLink } from './update-link.js'
 import debounce from 'just-debounce-it'
 
 const state = parseHash(window.location.hash && window.location.hash.replace(/^#/, ''))

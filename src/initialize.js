@@ -1,6 +1,6 @@
-import UpdateLink from './UpdateLink.html'
-import OutputViewer from './OutputViewer.html'
-import TextEditor from './TextEditor.html'
+import UpdateLink from './UpdateLink.svelte'
+import OutputViewer from './OutputViewer.svelte'
+import TextEditor from './TextEditor.svelte'
 
 const element = id => window.document.getElementById(id)
 

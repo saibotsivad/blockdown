@@ -1,5 +1,5 @@
 <script>
-import DefinitionList from './DefinitionList.html'
+import DefinitionList from './DefinitionList.svelte'
 
 export let block = {}
 

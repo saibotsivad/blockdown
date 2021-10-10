@@ -1,6 +1,6 @@
 <script>
-import Block from './Block.html'
-import Warning from './Warning.html'
+import Block from './Block.svelte'
+import Warning from './Warning.svelte'
 
 export let blocks = ''
 export let warnings = ''
